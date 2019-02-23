@@ -8,7 +8,13 @@
   },
   "dependencies": {
     "egg": "^2.15.1",
-    "egg-scripts": "^2.11.0"
+    "egg-bcrypt": "^1.1.0",
+    "egg-cors": "^2.1.2",
+    "egg-jwt": "^3.1.6",
+    "egg-mongoose": "^3.1.1",
+    "egg-scripts": "^2.11.0",
+    "egg-validate": "^2.0.2",
+    "eslint-config-prettier": "^4.0.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",
@@ -26,7 +32,7 @@
   "scripts": {
     "start": "egg-scripts start --daemon --title=egg-server-egg-template",
     "stop": "egg-scripts stop --title=egg-server-egg-template",
-    "dev": "egg-bin dev",
+    "dev": "egg-bin dev --port=7001",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",
