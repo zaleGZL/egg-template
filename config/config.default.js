@@ -21,8 +21,8 @@ module.exports = appInfo => {
   // 跨域及安全设置
   config.security = {
     csrf: {
-      queryName: 'x-csrf-token',
-      // enable: false,
+      // queryName: 'x-csrf-token',
+      enable: false,
     },
     domainWhiteList: ['*'],
     // domainWhiteList: [
@@ -38,7 +38,7 @@ module.exports = appInfo => {
   // MongoDB 数据库连接及配置
   config.mongoose = {
     client: {
-      url: 'mongodb://127.0.0.1/template',
+      url: 'mongodb://127.0.0.1/demo',
       options: {
         autoReconnect: true,
         reconnectTries: Number.MAX_VALUE,
@@ -70,6 +70,7 @@ module.exports = appInfo => {
     },
   };
 
+  // 通过 this.ctx.app.config 获取
   return {
     ...config,
     ...userConfig,

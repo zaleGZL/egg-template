@@ -39,7 +39,10 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "autod": "autod",
+    "init-db": "node ./script/init_db_file.js",
+    "start-db-dev": "mongod --config ./script/mongod.conf",
+    "start-db-prod": "mongod --config ./script/mongod.conf --fork"
   },
   "ci": {
     "version": "8"

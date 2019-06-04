@@ -7,10 +7,30 @@ module.exports = app => {
 
   // demo Schema
   const DemoSchema = new Schema({
-    // 名称
-    name: {
+    // 邮箱
+    email: {
       type: Types.String,
       required: true,
+      unique: true,
+    },
+
+    // 手机号
+    phone: {
+      type: Types.Number,
+      required: true,
+    },
+
+    // 密码
+    password: {
+      type: Types.String,
+      required: true,
+    },
+
+    // 用户身份 = 'DEMO'
+    identity: {
+      type: Types.String,
+      required: true,
+      enum: ['DEMO'],
     },
   });
 

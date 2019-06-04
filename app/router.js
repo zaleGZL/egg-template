@@ -6,17 +6,22 @@
 module.exports = app => {
   const { router, controller } = app;
 
-  // 验证用户 token 的中间件
-  const validateUserToken = app.middleware.checkToken('USER');
+  // 验证demo token 的中间件
+  const validateDemoToken = [app.middleware.paramTokenToHeader(), app.jwt, app.middleware.validateIdentity('DEMO')];
 
-  router.get('/demos/token', validateUserToken, controller.demo.getUserInfo);
 
-  router.get('/demos', controller.demo.getAll);
-  router.get('/demos/:id', controller.demo.get);
-  router.post('/demos', controller.demo.create);
-  router.put('/demos/:id', controller.demo.update);
-  router.delete('/demos/:id', controller.demo.delete);
+  // demo 账号注册
+  router.post('/api/demos/sign-up', controller.demo.create);
+  // demo 账号登录
+  router.get('/api/demos/sign-in', controller.demo.get);
+  // demo token 验证
+  router.get('/api/demos/token', ...validateDemoToken, controller.demo.validateToken);
 
-  router.post('/demos/csrf-token', controller.demo.updateCsrfToken);
-  router.post('/demos/jwt-token', controller.demo.setJwtToken);
+
+  // 获取所有的 demo 账号信息
+  router.get('/api/demos', controller.demo.getAll);
+  // 更新某个 demo 账号信息
+  router.put('/api/demos', controller.demo.update);
+  // 删除某个 demo 账号
+  router.delete('/api/demos/id/:id', controller.demo.delete);
 };
